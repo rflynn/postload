@@ -48,16 +48,12 @@ var PostLoad = {
 
     load_node : function (node)
     {
-        $(node.attributes).each(function(i, attr) {
-            if (/^postload-/.test(attr.name))
-            {
-                if (attr.name !== 'postload-priority')
-                {
-                    $(node).attr(attr.name.substr(9), attr.value);
-                    $(node).removeAttr(attr.name);
-                }
-            }
-        });
+        if (node.tagName == 'LINK')
+        {
+            $(node).attr('href', $(node).attr('postload-href'));
+        } else {
+            $(node).attr('src', $(node).attr('postload-src'));
+        }
     },
 
     /*
@@ -86,7 +82,7 @@ var PostLoad = {
         {
             opts = {};
         }
-        var selector = opts.selector || '*[postload-src]';
+        var selector = opts.selector || '(img,script,iframe,embed)[postload-src],link[postload-href]';
         var unloaded = PostLoad.prioritize($.makeArray($(selector)));
         setTimeout(function() {
             PostLoad.load(unloaded, opts);
