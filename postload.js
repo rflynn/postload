@@ -54,6 +54,7 @@ var PostLoad = {
 			{
 				if (attr.name !== 'postload-priority')
 				{
+                    // rewrite attribute minus the 'postload-' prefix
 					$(node).attr(attr.name.substr(9), attr.value);
 					$(node).removeAttr(attr.name);
 				}
