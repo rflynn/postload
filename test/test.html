@@ -6,26 +6,61 @@
 </head>
 <body>
 <h1>PostLoad Demo</h1>
-<img class="postload" width="32" height="32" postload-src="img1.jpg" alt="1" postload-priority="1">
-<img class="postload" width="64" height="64" postload-src="img1.jpg" alt="5">
-<img class="postload" width="32" height="32" postload-src="img1.jpg" alt="6">
-<br>
-<img class="postload" width="32" height="32" postload-src="img1.jpg" alt="7">
-<div style="border:1px solid #ccc">left to right
-	<img class="postload" postload-src="img1.jpg" alt="09">
-	<img class="postload" postload-src="img1.jpg" alt="10">
-	<img class="postload" postload-src="img1.jpg" alt="11">
-	<img class="postload" postload-src="img1.jpg" alt="12">
+
+<table>
+<tr>
+    <td>
+        <!-- don't postload the logo -->
+        <img width="64" height="64" src="img1.jpg" alt="5">
+        left to right
+        <img class="postload" postload-src="img1.jpg" alt="09">
+        <img class="postload" postload-src="img1.jpg" alt="10">
+        <img class="postload" postload-src="img1.jpg" alt="11">
+        <img class="postload" postload-src="img1.jpg" alt="12">
+
+<tr>
+    <td>
+
+        <table>
+            <tr>
+                <td width="200" valign="top">
+
+                    <div><img class="postload" width="32" height="32" postload-src="img1.jpg" alt="1" postload-priority="1"></div>
+                    <div><img class="postload" width="32" height="32" postload-src="img1.jpg" alt="6"></div>
+                    <div><img class="postload" width="32" height="32" postload-src="img1.jpg" alt="7"></div>
+
+                <td>
+
+<div style="border:1px dotted #ccc">
+    <h4>Third-party iframe, load last</h4>
+    <div id="fb-root"></div>
+    <script class="postload" postload-src="http://connect.facebook.net/en_US/all.js#appId=179412845460855&amp;xfbml=1" postload-priority="100"></script>
+    <fb:like href="" send="false" width="32" show_faces="false" action="like" font="">13</fb:like>
 </div>
-<img class="postload" width="128" height="128" postload-src="img1.jpg" alt="4">
+
+<div>
+    <h2>Video We Really Care About</h2>
+    We want to prioritize the streaming video, so delay other media assets.
+    If all the assets come from the same server this will make a difference because browsers limit total per-server connections.
+    <iframe width="425" height="349" src="http://www.youtube.com/embed/LxOeG3myCdU?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+
+                <td width="200">
+
+<img class="postload" width="256" height="128" postload-src="img1.jpg" alt="4">
+<div style="border:1px dotted #ccc">
+<h4>iframe with large on-screen real estate</h4>
 <iframe class="postload" postload-src="http://localhost/"></iframe>
+</div>
 <iframe class="postload" width="32" height="32" postload-src="http://localhost/"></iframe>
 
-<div id="fb-root"></div>
-<script class="postload" postload-src="http://connect.facebook.net/en_US/all.js#appId=179412845460855&amp;xfbml=1"></script>
-<fb:like href="" send="false" width="32" show_faces="false" action="like" font="">2</fb:like>
+            </table>
+</table>
 
-<img id="below-the-fold" class="postload" width="256" height="256" postload-src="img1.jpg" alt="13" style="position:absolute">
+<div id="below-the-fold" style="position:absolute">
+<h4>Below the fold, load after all above-the-fold elements</h4>
+<img id="below-the-fold" class="postload" width="256" height="256" postload-src="img1.jpg" alt="14">
+</div>
 
 </body>
 <script language="javascript">
@@ -35,7 +70,7 @@ $(document).ready(function () {
 	$('#below-the-fold').css('top', $(window).height() + 'px');
 
 	// post-load elements, delay each by 1 second to demo
-	PostLoad.run({delay_each:1000});
+	PostLoad.run({load_delay:1000});
 });
 
 </script>
