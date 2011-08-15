@@ -70,12 +70,12 @@ var PostLoad = {
 		var node = unloaded.shift();
 		if (node)
 		{
-			if (opts.load_delay)
+			if (opts.delay_each)
 			{
 				PostLoad.load_node(node);
 				setTimeout(function() {
 					PostLoad.load(unloaded, opts);
-				}, opts.load_delay);
+				}, opts.delay_each);
 			} else {
 				for (node in unloaded)
 				{
@@ -91,11 +91,11 @@ var PostLoad = {
 		{
 			opts = {};
 		}
-		var plselect = opts.plselect || '.postload';
-		var unloaded = PostLoad.prioritize($.makeArray($(plselect)));
+		var selector = opts.selector || '.postload';
+		var unloaded = PostLoad.prioritize($.makeArray($(selector)));
 		setTimeout(function() {
 			PostLoad.load(unloaded, opts);
-		}, opts.load_delay || 0);
+		}, opts.delay_each || 0);
 	},
 
 };
