@@ -93,7 +93,7 @@ var PostLoad = {
         {
             opts = {};
         }
-        var selector = opts.selector || '.postload';
+        var selector = opts.selector || '*[postload-src]';
         var unloaded = PostLoad.prioritize($.makeArray($(selector)));
         setTimeout(function() {
             PostLoad.load(unloaded, opts);
