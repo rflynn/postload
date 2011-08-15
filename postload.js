@@ -53,7 +53,7 @@ var PostLoad = {
         return unloaded;
     },
 
-    load_node : function (node, opts)
+    load_node : function (node)
     {
         $(node.attributes).each(function(i, attr) {
             if (/^postload-/.test(attr.name))
@@ -75,17 +75,14 @@ var PostLoad = {
         var node = unloaded.shift();
         if (node)
         {
+            PostLoad.load_node(node);
             if (opts.delay_each)
             {
-                PostLoad.load_node(node);
                 setTimeout(function() {
                     PostLoad.load(unloaded, opts);
                 }, opts.delay_each);
             } else {
-                for (node in unloaded)
-                {
-                    PostLoad.load_node(node);
-                }
+                $.map(unloaded, PostLoad.load_node);
             }
         }
     },
