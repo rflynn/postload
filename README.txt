@@ -8,3 +8,22 @@ Author: Ryan Flynn <parseerror@gmail.com>
 
 Requirements: jQuery
 
+
+Barebones Example:
+
+<html>
+<head>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script type="text/javascript" src="postload.js"></script>
+</head>
+<body>
+	<img postload-src="foo.jpg">
+	<script>
+	$(document).ready(function()
+	{
+		PostLoad.run();
+	});
+	</script>
+</body>
+</html>
+
