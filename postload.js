@@ -36,7 +36,7 @@ var PostLoad = {
 			}
 			var apriority = parseInt($(a).attr('postload-priority')) || 0;
 			var bpriority = parseInt($(b).attr('postload-priority')) || 0;
-			return     bpriority - apriority
+			return bpriority - apriority
 				|| scriptcmp
 				|| $(b).is(':visible') - $(a).is(':visible')
 				|| pxonscreen(b, boff) - pxonscreen(a, aoff)
