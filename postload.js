@@ -15,12 +15,6 @@
 
 var PostLoad = {
 
-    tagOrder : {
-        'IMG'   : 1,
-        'DIV'   : 2,
-        'IFRAME': 3,
-    },
-
     prioritize : function (unloaded)
     {
         var wh = $(window).height();
@@ -46,7 +40,6 @@ var PostLoad = {
                 || $(b).is(':visible') - $(a).is(':visible')
                 || apriority - bpriority
                 || pxonscreen(b, boff) - pxonscreen(a, aoff)
-                || PostLoad.tagOrder[a.tagName] - PostLoad.tagOrder[b.tagName]
                 || aoff.left - boff.left
                 ;
         });
