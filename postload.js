@@ -1,3 +1,4 @@
+/* ex: set ts=4 et: */
 /*
  * PostLoad: Prioritize/schedule page asset loading.
  * Improve responsiveness of core elements over secondary and third-party components.
@@ -91,7 +92,9 @@ var PostLoad = {
 		}
 		var plselect = opts.plselect || '.postload';
 		var unloaded = PostLoad.prioritize($.makeArray($(plselect)));
-		PostLoad.load(unloaded, opts);
+		setTimeout(function() {
+			PostLoad.load(unloaded, opts);
+		}, opts.load_delay || 0);
 	},
 
 };
