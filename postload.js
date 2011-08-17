@@ -87,7 +87,7 @@ var PostLoad = {
         setTimeout(function() {
             PostLoad.load(unloaded, opts);
         }, opts.delay_each || 0);
-    },
+    }
 
 };
 
