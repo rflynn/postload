@@ -9,6 +9,10 @@ Author: Ryan Flynn <parseerror@gmail.com>
 
 Requirements: jQuery
 
+Browser Compatibility:
+* Internet Explorer 8+
+* FireFox 5+
+* Chrome
 
 Barebones Example:
 
